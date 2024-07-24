@@ -64,8 +64,8 @@ const states = reactive([
     <h2>{{ titulo }}</h2>
     <div class="container" v-if="mostrarResult">
         <div class="formulario">
-            <h2>Cadastre-se</h2>
 
+            <h2>Cadastre-se</h2>
 
             <div class="row">
                 <label for="">Nome:</label>
@@ -120,14 +120,8 @@ const states = reactive([
 
                 <div class="botao">
                     <button @click="addlang">Enviar</button>
-
                 </div>
             </div>
-
-        </div>
-        <div class="result">
-
-            <p>@bokorn1</p>
 
         </div>
     </div>
@@ -145,24 +139,20 @@ const states = reactive([
             <p>Linguagens:</p>
             <p v-for="langs in infos.linguagens" :key="langs"> {{ langs }}</p>
         </div>
-    </div>  
+    </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
 * {
-    font-family: "Amarante", serif;
+   color: #000000; 
 }
 
 .botao {
-
+    color: #000000;
     display: flex;
     justify-content: center;
     padding: 3vw;
-
-    border: none;
-    color: rgb(20, 250, 70);
-
 }
 
 .container {
@@ -174,13 +164,12 @@ const states = reactive([
 h2 {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
 }
 
 
 
 label {
-    color: rgb(20, 250, 70)
+    color: #000000;
 }
 
 .container,
@@ -194,17 +183,15 @@ label {
 }
 
 .container .formulario h2 {
-    color: rgb(20, 250, 70);
-    font-weight: 500;
-    letter-spacing: 0.1rem;
+    color: #000000;
 }
 
 .container,
 .formulario,
 .row {
+    background: #ebebeb;
     position: relative;
     width: 100vw;
-
 }
 
 .formulario .row {
@@ -217,30 +204,21 @@ label {
 
 
 .result {
-    width: 50vw;
-    padding: 40px;
-    border-radius: 20px;
-    border: 8px solid #223243;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35),
-        inset -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35),
-        inset -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
-    width: 60vw;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 50vw;
+    padding: 40px;
+    border-radius: 20px;
+    width: 60vw;
     gap: 25px;
-    color: #FFF
 }
-
-
-
 
 .formulario {
     padding: 12px 10px 12px 48px;
     border: none;
     width: 60vw;
-    background: #223243;
+    background: #ebebeb;
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: #FFF;
     font-weight: 300;
@@ -254,13 +232,12 @@ label {
 
 input,
 select {
-    background: #223243;
+    background: #ebebeb;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
     padding: 12px 10px 12px 48px;
     border: none;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 ;
@@ -276,12 +253,14 @@ select {
 }
 
 button {
-    background: #223243;
+    background: #ebebeb;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow: 12px 12px 18px #bebebe,
+        -12px -12px 18px #ffffff;
     padding: 12px 10px 12px 10px;
     border: none;
-    color: rgb(20, 250, 70);
+    color: rgb(0, 0, 0);
 }
 </style>

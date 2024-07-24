@@ -1,11 +1,9 @@
-
 <script setup>
- import FormsAll from './components/FormsAll.vue';
+import FormsComps from './components/FormsComps.vue';
 </script>
 
 <template>
-  <FormsAll></FormsAll>
+  <FormsComps></FormsComps>
 </template>
-
 
 <style scoped></style>

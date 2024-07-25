@@ -1,5 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue';
+import SubmitForm from './SubmitForm.vue';
+
 const linguagens = ref('');
 
 const mostrarResult = ref(true)
@@ -12,6 +14,7 @@ function addlang() {
         linguagens.value = ''
         mostrarResult.value = !mostrarResult.value
     }
+    console.log(infos)
 
 }
 const infos = reactive({
@@ -64,8 +67,8 @@ const states = reactive([
     <h2>{{ titulo }}</h2>
     <div class="container" v-if="mostrarResult">
         <div class="formulario">
-
             <h2>Cadastre-se</h2>
+
 
             <div class="row">
                 <label for="">Nome:</label>
@@ -119,33 +122,30 @@ const states = reactive([
                 <input type="text" v-model="linguagens">
 
                 <div class="botao">
-                    <button @click="addlang">Enviar</button>
+                    <button @click="addlang">Salvar</button>
+
                 </div>
             </div>
 
         </div>
-    </div>
-    <div v-else class="result">
-        <h2>Informações</h2>
-        <p>Nome:{{ infos.nome }}</p>
-        <p>E-mail:{{ infos.email }}</p>
-        <p>Senha:{{ infos.senha }} </p>
-        <p>Data de nascimento: {{ infos.data }}</p>
-        <p>Endereço: {{ infos.endereco }}</p>
-        <p>Cidade: {{ infos.cidade }}</p>
-        <p>Hobbies: {{ infos.hobbies }}</p>
-        <p>Biografia:{{ infos.biografia }}</p>
-        <div class="language">
-            <p>Linguagens:</p>
-            <p v-for="langs in infos.linguagens" :key="langs"> {{ langs }}</p>
+        <div class="result">
+
+            <p></p>
+
         </div>
     </div>
+    <div v-else class="result">
+            <SubmitForm :nome="infos.nome" :email="infos.email" :senha="infos.senha" :data="infos.data" :endereco="infos.endereco" :cidade="infos.cidade" :hobbies="infos.hobbies" :biografia="infos.biografia" :linguagens="infos.linguagens"/>
+
+        </div>
+
+  
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
 * {
-   color: #000000; 
+    color: #000000;
 }
 
 .botao {
@@ -224,7 +224,7 @@ label {
     font-weight: 300;
     border-radius: 25px;
     font-size: 1em;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: -5px -5px 15px rgba(134, 64, 148, 0.575), 5px 5px 15px rgba(0, 0, 0, 0.35);
     transition: 0.5s;
     outline: none;
 

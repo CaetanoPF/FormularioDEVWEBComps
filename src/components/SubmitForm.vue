@@ -57,8 +57,7 @@ defineProps({
       <p>Data de Nascimento: {{ data }}</p>
       <p>Endereço: {{ endereco }}</p>
       <p>Cidade: {{ cidade }}</p>
-      <p>Hobbies: {{ hobbies }}
-      </p>
+      <p>Hobbies: {{ hobbies }}</p>
       <p>Biografia: {{ biografia }}</p>
       <p>Linguagens Preferidas: <span v-for="linguagem, i in linguagens" :key="i">{{ linguagem }}</span></p>
     </div>

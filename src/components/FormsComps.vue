@@ -64,134 +64,123 @@ const states = reactive([
 </script>
 
 <template>
-    <h2>{{ titulo }}</h2>
     <div class="container" v-if="mostrarResult">
+
         <div class="formulario">
             <h2>Cadastre-se</h2>
 
-
             <div class="row">
                 <label for="">Nome:</label>
-                <input type="text" v-model="infos.nome">
+                <input type="text" v-model="infos.nome" placeholder="Informe seu nome" required />
             </div>
 
             <div class="row">
                 <label for="">E-mail:</label>
-                <input type="text" v-model="infos.email">
+                <input type="text" v-model="infos.email" placeholder="Informe seu email" required />
             </div>
 
             <div class="row">
                 <label for="">Senha:</label>
-                <input type="password" v-model="infos.senha">
+                <input type="password" v-model="infos.senha" placeholder="Crie uma senha" required />
             </div>
 
             <div class="row">
                 <label for="">Confirmação de senha:</label>
-                <input type="password" v-model="infos.confirma">
+                <input type="password" v-model="infos.confirma" placeholder="Confirme sua senha" required />
 
             </div>
             <div class="row">
                 <label for="">Data de nascimento:</label>
-                <input type="date" v-model="infos.data">
+                <input type="date" v-model="infos.data" placeholder="Sua data de nascimento" required />
             </div>
             <div class="row">
                 <label for="">Endereço:</label>
-                <input type="text" v-model="infos.endereco">
+                <input type="text" v-model="infos.endereco" placeholder="Seu endereço" required />
             </div>
             <div class="row">
                 <label for="">Cidade:</label>
-                <input type="text" v-model="infos.cidade">
+                <input type="text" v-model="infos.cidade" placeholder="Cidade em que reside" required />
             </div>
             <div class="row">
                 <label for="text">Estado:</label>
-                <select name="estados" id="estados" v-model="estado">
-                    <option value="state.uf" v-for="state in states" :key="state.uf"> {{ state.uf }} {{ state.name }}
-                    </option>
+                <select name="estados" id="estados" v-model="estado" placeholder="Informe o estado em que reside" required >
+                    <option value="" disabled selected>Informe o estado em que reside</option>
+                    <option value="state.uf" v-for="state in states" :key="state.uf" > {{ state.uf }} {{ state.name }} </option>
                 </select>
             </div>
             <div class="row">
                 <label for="">Hobbies:</label>
-                <input type="text" v-model="infos.hobbies">
+                <input type="text" v-model="infos.hobbies" placeholder="Informe seus hobbies" required />
             </div>
             <div class="row">
                 <label for="">Biografia:</label>
-                <input type="text" v-model="infos.biografia">
+                <input type="text" v-model="infos.biografia" placeholder="Breve biografia" required />
             </div>
             <div class="row">
                 <label for="">Diga quais são suas linguagens preferidas:</label>
                 <input type="text" v-model="linguagens">
-
-                <div class="botao">
-                    <button @click="addlang">Salvar</button>
-
-                </div>
             </div>
-
+            <div class="botao">
+                <button @click="addlang">Salvar</button>
+            </div>
         </div>
         <div class="result">
-
-            <p></p>
-
         </div>
     </div>
     <div v-else class="result">
-            <SubmitForm :nome="infos.nome" :email="infos.email" :senha="infos.senha" :data="infos.data" :endereco="infos.endereco" :cidade="infos.cidade" :hobbies="infos.hobbies" :biografia="infos.biografia" :linguagens="infos.linguagens"/>
-
-        </div>
-
-  
+        <SubmitForm :nome="infos.nome" :email="infos.email" :senha="infos.senha" :data="infos.data"
+            :endereco="infos.endereco" :cidade="infos.cidade" :hobbies="infos.hobbies" :biografia="infos.biografia"
+            :linguagens="infos.linguagens" />
+    </div>
 </template>
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
-* {
-    color: #000000;
+<style scoped>
+button {
+    border-radius: 10%;
+    border: none;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    background: #fafafa;
+    box-shadow: 12px 12px 24px #cbcbcb,
+        -12px -12px 24px #ffffff;
+    transition: all 0.3s;
 }
 
-.botao {
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    padding: 3vw;
+button:hover {
+    border: 1px solid rgb(207, 207, 207);
 }
 
 .container {
-    width: 50vw;
-    padding: 40px;
-    border-radius: 20px;
-}
-
-h2 {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 12px 12px 24px #cbcbcb,
+        -12px -12px 24px #ffffff;
 }
-
-
 
 label {
     color: #000000;
 }
 
-.container,
 .formulario {
-    width: 60vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 25px;
-}
-
-.container .formulario h2 {
-    color: #000000;
 }
 
 .container,
 .formulario,
 .row {
-    background: #ebebeb;
+    background: #e6e6e6;
     position: relative;
-    width: 100vw;
+    align-items: center;
+    color: #000000;
 }
 
 .formulario .row {
@@ -199,9 +188,8 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 80%;
+    width: 50%;
 }
-
 
 .result {
     justify-content: center;
@@ -215,52 +203,29 @@ label {
 }
 
 .formulario {
-    padding: 12px 10px 12px 48px;
     border: none;
-    width: 60vw;
-    background: #ebebeb;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #FFF;
-    font-weight: 300;
+    width: 50%;
+    font-weight: 20px;
     border-radius: 25px;
     font-size: 1em;
-    box-shadow: -5px -5px 15px rgba(134, 64, 148, 0.575), 5px 5px 15px rgba(0, 0, 0, 0.35);
     transition: 0.5s;
     outline: none;
-
 }
 
 input,
 select {
-    background: #ebebeb;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    width: 100%;
+    height: 3vh;
     border-radius: 10px;
-    padding: 12px 10px 12px 48px;
+    padding: 10px;
     border: none;
     color: rgb(0, 0, 0);
-}
-
-;
-
-
-.check {
-    width: 2vw;
 }
 
 .items-checkbox {
     display: flex;
     flex-direction: column;
-}
-
-button {
-    background: #ebebeb;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    box-shadow: 12px 12px 18px #bebebe,
-        -12px -12px 18px #ffffff;
-    padding: 12px 10px 12px 10px;
-    border: none;
-    color: rgb(0, 0, 0);
+    color: #000000;
 }
 </style>

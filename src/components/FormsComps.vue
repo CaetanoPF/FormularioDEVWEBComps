@@ -1,7 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue';
 import SubmitForm from './SubmitForm.vue';
-
 const linguagens = ref('');
 
 const mostrarResult = ref(true)
@@ -11,12 +10,11 @@ function addlang() {
     }
     else {
         infos.linguagens.push(linguagens.value)
-        linguagens.value = ''
         mostrarResult.value = !mostrarResult.value
     }
     console.log(infos)
-
 }
+
 const infos = reactive({
     nome: '',
     email: '',
@@ -64,123 +62,143 @@ const states = reactive([
 </script>
 
 <template>
+    <h2>{{ titulo }}</h2>
     <div class="container" v-if="mostrarResult">
-
         <div class="formulario">
             <h2>Cadastre-se</h2>
 
+
             <div class="row">
                 <label for="">Nome:</label>
-                <input type="text" v-model="infos.nome" placeholder="Informe seu nome" required />
+                <input type="text" v-model="infos.nome">
             </div>
 
             <div class="row">
                 <label for="">E-mail:</label>
-                <input type="text" v-model="infos.email" placeholder="Informe seu email" required />
+                <input type="text" v-model="infos.email">
             </div>
 
             <div class="row">
                 <label for="">Senha:</label>
-                <input type="password" v-model="infos.senha" placeholder="Crie uma senha" required />
+                <input type="password" v-model="infos.senha">
             </div>
 
             <div class="row">
                 <label for="">Confirmação de senha:</label>
-                <input type="password" v-model="infos.confirma" placeholder="Confirme sua senha" required />
+                <input type="password" v-model="infos.confirma">
 
             </div>
             <div class="row">
                 <label for="">Data de nascimento:</label>
-                <input type="date" v-model="infos.data" placeholder="Sua data de nascimento" required />
+                <input type="date" v-model="infos.data">
             </div>
             <div class="row">
                 <label for="">Endereço:</label>
-                <input type="text" v-model="infos.endereco" placeholder="Seu endereço" required />
+                <input type="text" v-model="infos.endereco">
             </div>
             <div class="row">
                 <label for="">Cidade:</label>
-                <input type="text" v-model="infos.cidade" placeholder="Cidade em que reside" required />
+                <input type="text" v-model="infos.cidade">
             </div>
             <div class="row">
                 <label for="text">Estado:</label>
-                <select name="estados" id="estados" v-model="estado" placeholder="Informe o estado em que reside" required >
-                    <option value="" disabled selected>Informe o estado em que reside</option>
-                    <option value="state.uf" v-for="state in states" :key="state.uf" > {{ state.uf }} {{ state.name }} </option>
+                <select name="estados" id="estados" v-model="estado">
+                    <option value="state.uf" v-for="state in states" :key="state.uf"> {{ state.uf }} {{ state.name }}
+                    </option>
                 </select>
             </div>
             <div class="row">
                 <label for="">Hobbies:</label>
-                <input type="text" v-model="infos.hobbies" placeholder="Informe seus hobbies" required />
+                <input type="text" v-model="infos.hobbies">
             </div>
             <div class="row">
                 <label for="">Biografia:</label>
-                <input type="text" v-model="infos.biografia" placeholder="Breve biografia" required />
+                <input type="text" v-model="infos.biografia">
             </div>
             <div class="row">
                 <label for="">Diga quais são suas linguagens preferidas:</label>
                 <input type="text" v-model="linguagens">
+
+                <div class="botao">
+                    <button @click="addlang">Salvar</button>
+
+                </div>
             </div>
-            <div class="botao">
-                <button @click="addlang">Salvar</button>
-            </div>
+
         </div>
-        <div class="result">
+        <div class="footer">
+
+            <p>Todos os direitos reservados Bokorni Corporation©</p>
+
         </div>
     </div>
     <div v-else class="result">
         <SubmitForm :nome="infos.nome" :email="infos.email" :senha="infos.senha" :data="infos.data"
             :endereco="infos.endereco" :cidade="infos.cidade" :hobbies="infos.hobbies" :biografia="infos.biografia"
-            :linguagens="infos.linguagens" />
+            :linguagens="infos.linguagens" @voltar="mostrarResult = !mostrarResult"/>
+
     </div>
 </template>
-
 <style scoped>
-button {
-    border-radius: 10%;
-    border: none;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    background: #e8e8e8;
-    cursor: pointer;
-    border: 1px solid #e8e8e8;
-    background: #fafafa;
-    box-shadow: 12px 12px 24px #cbcbcb,
-        -12px -12px 24px #ffffff;
-    transition: all 0.3s;
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
+
+* {
+    font-family: "Amarante", serif;
 }
 
-button:hover {
-    border: 1px solid rgb(207, 207, 207);
+.botao {
+    
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: none;
+    color: rgb(20, 250, 70);
+
 }
 
 .container {
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+h2 {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 12px 12px 24px #cbcbcb,
-        -12px -12px 24px #ffffff;
+    margin-top: 1rem;
 }
+
+
 
 label {
-    color: #000000;
+    color: rgb(20, 250, 70)
 }
 
+.container,
 .formulario {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 25px;
+}
+
+.container .formulario h2 {
+    color: rgb(20, 250, 70);
+    font-weight: 500;
+    letter-spacing: 0.1rem;
 }
 
 .container,
 .formulario,
 .row {
-    background: #e6e6e6;
     position: relative;
-    align-items: center;
-    color: #000000;
+    width: 80%;
+
 }
 
 .formulario .row {
@@ -188,44 +206,83 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 50%;
+    width: 80%;
 }
 
+.footer {
+    background-color: #223243;
+    width: 80%;
+    height: 150px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(20, 250, 70);
+    border-radius: 20px;
+}
+
+
 .result {
+    width: 50vw;
+    padding: 40px;
+    width: 60vw;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50vw;
-    padding: 40px;
-    border-radius: 20px;
-    width: 60vw;
     gap: 25px;
+    color: #FFF;
+
+    height: 100vh;
 }
 
+
+
+
 .formulario {
+    padding: 12px 10px 12px 48px;
     border: none;
-    width: 50%;
-    font-weight: 20px;
+    width: 60vw;
+    background: #223243;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #FFF;
+    font-weight: 300;
     border-radius: 25px;
     font-size: 1em;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
     transition: 0.5s;
     outline: none;
+    
 }
 
 input,
 select {
-    background: #ffffff;
-    width: 100%;
-    height: 3vh;
-    border-radius: 10px;
-    padding: 10px;
+    background: #223243;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    padding: 12px 10px 12px 48px;
     border: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+.check {
+    width: 2vw;
 }
 
 .items-checkbox {
     display: flex;
     flex-direction: column;
-    color: #000000;
+}
+
+button {
+    background: #223243;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    padding: 12px 10px 12px 10px;
+    border: none;
+    color: rgb(20, 250, 70);
 }
 </style>

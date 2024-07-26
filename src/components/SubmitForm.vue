@@ -89,9 +89,11 @@ button {
   margin-top: 20px;
   font-family: Amarante, serif;
 }
-.resultado p{
+
+.resultado p {
   color: rgb(20, 250, 70);
 }
+
 .botao {
   width: 100%;
   height: 60%;

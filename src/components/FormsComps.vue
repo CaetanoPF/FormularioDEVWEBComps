@@ -152,7 +152,7 @@ const states = reactive([
     justify-content: center;
     padding: 20px;
     border: none;
-    color: rgb(20, 250, 70);
+    color: rgb(0, 0, 0);
 
 }
 
@@ -171,12 +171,6 @@ h2 {
     margin-top: 1rem;
 }
 
-
-
-label {
-    color: rgb(20, 250, 70)
-}
-
 .container,
 .formulario {
     width: 100%;
@@ -188,7 +182,7 @@ label {
 }
 
 .container .formulario h2 {
-    color: rgb(20, 250, 70);
+    color: rgb(0, 0, 0);
     font-weight: 500;
     letter-spacing: 0.1rem;
 }
@@ -198,7 +192,6 @@ label {
 .row {
     position: relative;
     width: 80%;
-
 }
 
 .formulario .row {
@@ -217,10 +210,9 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(20, 250, 70);
+    color: rgb(0, 0, 0);
     border-radius: 20px;
 }
-
 
 .result {
     width: 50vw;
@@ -232,12 +224,8 @@ label {
     flex-direction: column;
     gap: 25px;
     color: #FFF;
-
     height: 100vh;
 }
-
-
-
 
 .formulario {
     padding: 12px 10px 12px 48px;
@@ -252,7 +240,6 @@ label {
     box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
     transition: 0.5s;
     outline: none;
-    
 }
 
 input,
@@ -265,7 +252,6 @@ select {
     border: none;
     color: rgb(255, 255, 255);
 }
-
 
 .check {
     width: 2vw;

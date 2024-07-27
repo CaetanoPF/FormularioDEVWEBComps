@@ -1,4 +1,8 @@
+
 <script setup>
+const emits = defineEmits([
+  'voltar'
+])
 defineProps({
   nome: {
     type: String,
@@ -42,15 +46,9 @@ defineProps({
     required: true
   }
 })
-
-const emits = defineEmits([
-  'voltar'
-])
-
 </script>
 <template>
   <div class="botao">
-
     <div class="resultado">
       <p>Nome: {{ nome }}</p>
       <p>E-mail: {{ email }}</p>
@@ -61,59 +59,52 @@ const emits = defineEmits([
       <p>Hobbies: {{ hobbies }}</p>
       <p>Biografia: {{ biografia }}</p>
       <p>Linguagens Preferidas: <span v-for="linguagem, i in linguagens" :key="i">{{ linguagem }}</span></p>
+      <div>
+        <button @click="emits('voltar')">voltar</button>
+      </div>
     </div>
-
   </div>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
 .resultado {
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 500px;
+  height: 100%;
+  margin: 0vw 0vw 0vw 0vw;
+  padding: 1vw 0vw 0vw 0vw;
 }
 
 button {
-  background: #223243;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 25px;
-  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
-  padding: 12px 10px 12px 10px;
+  background: #ffffff;
+  border-radius: 1vw;
+  box-shadow: -5px -5px 15px rgba(221, 221, 221, 0.336), 5px 5px 15px rgba(156, 156, 156, 0.301);
+  padding: 1vw 5vw 1vw 5vw;
+  margin: 2vw 0vw 0vw 0vw;
   border: none;
-  color: rgb(20, 250, 70);
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  font-family: Amarante, serif;
-}
-
-.resultado p {
-  color: rgb(20, 250, 70);
+  font-weight: 600;
 }
 
 .botao {
   width: 100%;
-  height: 60%;
+  height: 70%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50vw;
-  padding: 40px;
-  border-radius: 20px;
-  border: 8px solid #223243;
-  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35),
-    inset -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
-  width: 60vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 25px;
-  color: #FFF;
-  background-color: #223243;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5vw; 
+  box-shadow: 1vw -0.5vw 2vw #dbdbdbce,
+    -1vw 0vw 2vw #fafafa; 
+  gap: 25px; 
+  background-color: #ffffff;
 }
 </style>

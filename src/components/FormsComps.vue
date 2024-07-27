@@ -5,7 +5,7 @@ const linguagens = ref('');
 
 const mostrarResult = ref(true)
 function addlang() {
-    if (linguagens.value == '' || !infos.email.includes('@') || infos.confirma != infos.senha) {
+    if (linguagens.value == '' || !infos.email.includes('@gmail.com') || infos.confirmsenha != infos.senha) {
         alert('Credenciais inválidas!')
     }
     else {
@@ -19,15 +19,14 @@ const infos = reactive({
     nome: '',
     email: '',
     senha: '',
-    confirma: '',
+    confirmsenha: '',
     data: '',
     endereco: '',
     cidade: '',
     hobbies: '',
-    biografia: '',
-    linguagens: []
+    linguagens: [],
+    biografia: ''
 })
-
 
 const estado = ref('');
 const states = reactive([
@@ -84,7 +83,7 @@ const states = reactive([
 
             <div class="row">
                 <label for="">Confirmação de senha:</label>
-                <input type="password" v-model="infos.confirma" placeholder="Confirme sua senha" required>
+                <input type="password" v-model="infos.confirmsenha" placeholder="Confirme sua senha" required>
 
             </div>
             <div class="row">
@@ -117,11 +116,10 @@ const states = reactive([
             </div>
             <div class="row">
                 <label for="">Linguagens:</label>
-                <input type="text" v-model="linguagens" placeholder="Linguagens de porgramação favoritas" required>
-
-                <div class="botao">
-                    <button @click="addlang">Salvar</button>
-                </div>
+                <input type="text" v-model="linguagens" placeholder="Linguagens de programação favoritas" required>
+            </div>
+            <div class="botao">
+                <button @click="addlang">Salvar</button>
             </div>
         </div>
     </div>
@@ -136,12 +134,13 @@ const states = reactive([
 
 * {
     font-family: "Roboto", sans-serif;
+    color: black;
 }
 
 .botao {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 0px 0px 2vw 0px;
     border: none;
 }
 
@@ -157,7 +156,10 @@ const states = reactive([
 h2 {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 1.3rem;
+    font-weight: 600;
+    font-size: 2.3vw;
+    letter-spacing: 0.1rem;
 }
 
 .container,
@@ -170,24 +172,19 @@ h2 {
     gap: 25px;
 }
 
-.container .formulario h2 {
-    font-weight: 500;
-    letter-spacing: 0.1rem;
-}
-
 .container,
 .formulario,
 .row {
     position: relative;
-    width: 80%;
 }
 
 .formulario .row {
-    margin: 1.3rem 0;
+    margin: 0.3rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 80%;
+    font-size: 1.3vw;
 }
 
 .result {
@@ -205,7 +202,6 @@ h2 {
 .formulario {
     border: none;
     width: 40vw;
-    font-weight: 300;
     border-radius: 25px;
     font-size: 1.1vw;
     background: #ffffff;
@@ -218,9 +214,9 @@ h2 {
 input,
 select {
     border-radius: 25px;
-    background: #ffffff;
-    box-shadow: 1vw 1vw 1vw #ececec,
-        -1vw -1vw 4vw #ececec;
+    background: #fdfdfd;
+    box-shadow: 1vw 1vw 1vw #e9e9e9b7,
+        0vw 0vw 3vw #dfdfdf85;
     padding: 1vw 1vw 1vw 1vw;
     border: none;
 }
@@ -230,13 +226,18 @@ select {
     flex-direction: column;
 }
 
+label {
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
 button {
-    width: 20%;
     background: #f8f8f8;
-    border-radius: 25px;
+    border-radius: 2vw;
     box-shadow: -5px -5px 15px rgba(221, 221, 221, 0.336), 5px 5px 15px rgba(156, 156, 156, 0.301);
-    padding: 1vw 2vw 1vw 2vw;
+    padding: 1vw 5vw 1vw 5vw;
     margin: 1vw;
     border: none;
+    font-weight: 600;
 }
 </style>
